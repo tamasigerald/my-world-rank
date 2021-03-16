@@ -16,7 +16,7 @@ const Country: FC = () => {
 
     const getData = () => {
         if (route !== '[country]') {
-            fetch(`https://restcountries.eu/rest/v2/name/${route}?fullText=true`)
+            fetch(`${process.env.NEXT_PUBLIC_BASE_API}/name/${route}?fullText=true`)
             .then(res => res.json())
             .then (res => setCountry(res[0]))
             .catch(err => console.log(err))

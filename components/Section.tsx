@@ -1,4 +1,4 @@
-import { styled } from "../styles/theme";
+import styled from 'styled-components';
 
 export const Section = styled.section`
     margin-top: 60px;

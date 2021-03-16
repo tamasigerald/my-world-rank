@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { styled, scrollBtn, breakpoint } from "../styles/theme";
+import styled from 'styled-components';
+
+import { scrollBtn, breakpoint } from "../styles/theme";
 
 
 

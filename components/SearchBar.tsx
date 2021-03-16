@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { useRouter } from 'next/router';
-import { SearchContext } from "../contexts/SearchContext"
-import { styled } from "../styles/theme"
+import { SearchContext } from "../contexts/SearchContext";
+import styled from 'styled-components';;
 
 export const SearchBar = (props) => {
 

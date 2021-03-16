@@ -1,6 +1,6 @@
-
-import { useRouter } from "next/router"
-import { styled } from "../../styles/theme"
+import styled from 'styled-components';
+import { useRouter } from "next/router";
+// import { styled } from "../../styles/theme"
 
 
 
@@ -26,7 +26,7 @@ export const CountryTable = (props) => {
                 <TableCard key={i} onClick={() => {goToCountry(country.name)}} >
                     <Flag src={country.flag} alt={country.name} />
                     <div>{country.name}</div>
-                    <div>{country.population}</div>
+                    <div>{country.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
                 </TableCard>
             ))}
 
@@ -51,12 +51,12 @@ const TableHeader = styled.div`
     margin-bottom: 1.5rem;
     width: 100%;
 
-    & :first-child {
+    & > :first-child {
         margin-right: 2rem;
         margin-left: 0;
     }
 
-    & :nth-child(2) {
+    & > :nth-child(2) {
         margin-left: 0;
         margin-right: auto;
     }
@@ -87,14 +87,14 @@ const TableCard = styled.div`
     width: 100%;
     cursor: pointer;
 
-    & :first-child {
+    & > :first-child {
         margin-left: 0;
-        margin-right: 2rem;
+        /* margin-right: 2rem; */
     }
 
-    & :nth-child(2) {
+    & > :nth-child(2) {
         margin-right: auto;
-        margin-left: 0;
+        margin-left: 1rem;
         max-width: 55%;
     }
     & * {
