@@ -58,7 +58,7 @@ const Country: FC = () => {
                     </Row>}
                     {country.area && <Row>
                         <Title>Area:</Title>
-                        <Content>{country.area} m<sup>2</sup></Content>
+                        <Content>{country.area} km<sup>2</sup></Content>
                     </Row>}
                 </SectionContent>
             
@@ -111,6 +111,10 @@ const Content = styled.p`
     display: flex;
     flex: 1.5;
     padding-left: 2rem;
+
+    & sup {
+        font-size: 65%;
+    }
 `
 
 const Flag = styled.img`

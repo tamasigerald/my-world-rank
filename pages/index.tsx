@@ -17,7 +17,8 @@ const Home: FC<Props> = ({ theme }) => {
   // console.log(countries[0]);
 
   const getData = () => {
-    fetch('https://restcountries.eu/rest/v2/all')
+    console.log(process.env.NEXT_PUBLIC_BASE_API);
+    fetch(process.env.NEXT_PUBLIC_BASE_API + '/all')
     .then(res => res.json())
     .then (res => setCountries(res))
     .catch(err => console.log(err))
