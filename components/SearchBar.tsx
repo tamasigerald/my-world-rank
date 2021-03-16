@@ -4,11 +4,11 @@ import styled from 'styled-components';;
 
 export const SearchBar = (props) => {
 
-    const { setSearchValue }: any = useContext(SearchContext);
+    const { searchValue, setSearchValue }: any = useContext(SearchContext);
 
     return (
         <SearchWrapper>
-            <Search type="text" placeholder="search" onChange={(e) => {setSearchValue(e.target.value.toLowerCase())}} />
+            <Search type="text" placeholder="search" value={searchValue || ''} onChange={(e) => {setSearchValue(e.target.value.toLowerCase())}} />
         </SearchWrapper>
     )
 }

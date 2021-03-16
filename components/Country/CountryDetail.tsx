@@ -50,10 +50,10 @@ export const CountryDetail = (props) => {
             <Title>Regional Blocks:</Title>
             <Content>
             {country.regionalBlocs.map((el, i) => (
-                <>
                     <ContentRow key={i}>{el.acronym}</ContentRow>
+            ))}
+            {country.regionalBlocs.map((el, i) => (
                     <ContentRow key={i}>{el.name}</ContentRow>
-                </>
             ))}
             </Content>
         </Row>}
