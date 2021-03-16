@@ -4,6 +4,10 @@ import { FC, useEffect, useState } from "react";
 import { Section, SectionHeader, SectionContent } from "../components/Section"
 import { styled } from "../styles/theme";
 
+import { CountryDetail } from '../components/Country/CountryDetail';
+import { CountryTranslation } from '../components/Country/CountryTranslation';
+import { CountryMisc } from '../components/Country/CountryMisc';
+
 
 
 const Country: FC = () => {
@@ -40,26 +44,14 @@ const Country: FC = () => {
                 <SectionContent>
                     <Flag src={country.flag} />
 
-                    <ContentTitle>
-                        <h3>Details</h3>
-                    </ContentTitle>
+                    <ContentTitle><h3>Details</h3></ContentTitle>
+                    <CountryDetail country={country}/>
 
-                    {country.nativeName && <Row>
-                        <Title>Native name:</Title>
-                        <Content>{country.nativeName}</Content>
-                    </Row>}
-                    {country.demonym && <Row>
-                        <Title>Demonym:</Title>
-                        <Content>{country.demonym}</Content>
-                    </Row>}
-                    {country.capital && <Row>
-                        <Title>Capital:</Title>
-                        <Content>{country.capital}</Content>
-                    </Row>}
-                    {country.area && <Row>
-                        <Title>Area:</Title>
-                        <Content>{country.area} km<sup>2</sup></Content>
-                    </Row>}
+                    <ContentTitle><h3>Translations</h3></ContentTitle>
+                    <CountryTranslation country={country}/>
+
+                    <ContentTitle><h3>Misc</h3></ContentTitle>
+                    <CountryMisc country={country}/>
                 </SectionContent>
             
             </Section>}
@@ -75,6 +67,7 @@ const ContentTitle = styled.div`
     justify-content: center;
     align-items: center;
     position: relative;
+    margin-top: 1.2rem;
     margin-bottom: 1rem;
     padding: 1rem;
     width: 100%;
@@ -93,27 +86,6 @@ const ContentTitle = styled.div`
 
     h3 {
         font-weight: 400;
-    }
-`
-
-const Row = styled.div`
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-`
-
-const Title = styled.p`
-    display: flex;
-    flex: 1;
-`
-
-const Content = styled.p`
-    display: flex;
-    flex: 1.5;
-    padding-left: 2rem;
-
-    & sup {
-        font-size: 65%;
     }
 `
 
