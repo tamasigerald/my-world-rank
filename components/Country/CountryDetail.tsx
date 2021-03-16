@@ -30,6 +30,10 @@ export const CountryDetail = (props) => {
             <Title>Area:</Title>
             <Content><span>{country.area.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} km<sup>2</sup></span></Content>
         </Row>}
+        {country.population && <Row>
+            <Title>Area:</Title>
+            <Content><span>{country.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span></Content>
+        </Row>}
         {country.alpha2Code && <Row>
             <Title>Alpha Code:</Title>
             <Content>{country.alpha2Code} - {country.alpha3Code}</Content>
