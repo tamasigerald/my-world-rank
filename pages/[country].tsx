@@ -54,8 +54,7 @@ const Country: FC = () => {
                     <ContentTitle><h3>Misc</h3></ContentTitle>
                     <CountryMisc country={country}/>
 
-                    <ModalWrapper active={showModal}>
-                    <button onClick={() => setShowModal(!showModal)}>Click</button>
+                    <ModalWrapper>
                     </ModalWrapper>
                 </SectionContent>
             

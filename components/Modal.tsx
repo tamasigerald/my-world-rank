@@ -1,11 +1,21 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
+import { ModalContext } from '../contexts/ModalContext';
+import { Button } from './Button';
+
 
 
 export const ModalWrapper = (props) => {
+
+    const { showModal, setShowModal }:any = useContext(ModalContext);
+
     return (
         <>
-            <Modal active={props.active}>{props.children}</Modal>
-            <ModalBg active={props.active} />
+            <Modal active={showModal}>
+                <Button onClick={() => setShowModal(!showModal)}>back</Button>
+                {props.children}
+            </Modal>
+            <ModalBg active={showModal} />
         </>
     )
 }
@@ -23,7 +33,6 @@ const Modal = styled.div`
 `
 
 const ModalBg = styled.div`
-    /* display: ${props => props.active ? 'block' : 'none'}; */
     position: fixed;
     bottom: 0;
     left: 0;

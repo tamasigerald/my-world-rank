@@ -4,7 +4,7 @@ export const Row = styled.div`
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin: 0.6rem 0;
+    margin: 0.8rem 0;
 
     /* & :last-of-type {
         padding-bottom: 10rem;
