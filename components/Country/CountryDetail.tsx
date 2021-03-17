@@ -1,3 +1,4 @@
+import { Modal } from "../Modal";
 import { Content, ContentRow, Row, Title } from "./MainComponents";
 
 export const CountryDetail = (props) => {

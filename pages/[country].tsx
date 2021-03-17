@@ -1,20 +1,23 @@
 import Head from 'next/head';
 import { useRouter } from "next/router"
-import { FC, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import { Section, SectionHeader, SectionContent } from "../components/Section"
 import { styled } from "../styles/theme";
 
 import { CountryDetail } from '../components/Country/CountryDetail';
 import { CountryTranslation } from '../components/Country/CountryTranslation';
 import { CountryMisc } from '../components/Country/CountryMisc';
+import { ModalWrapper } from '../components/Modal';
+import { ModalContext } from '../contexts/ModalContext';
 
 
 
 const Country: FC = () => {
 
     const router = useRouter();
-
     const route = router.asPath.replace(/^\//, '');
+
+    const { showModal, setShowModal }: any = useContext(ModalContext);
 
     const [ country, setCountry ] = useState(null);
 
@@ -26,8 +29,6 @@ const Country: FC = () => {
             .catch(err => console.log(err))
         }
     }
-
-    console.log(country);
 
     useEffect(getData, [router.isReady]);
 
@@ -43,7 +44,7 @@ const Country: FC = () => {
                 </SectionHeader>
                 <SectionContent>
                     <Flag src={country.flag} />
-
+                    <button onClick={() => setShowModal(!showModal)}>Click</button>
                     <ContentTitle><h3>Details</h3></ContentTitle>
                     <CountryDetail country={country}/>
 
@@ -52,6 +53,10 @@ const Country: FC = () => {
 
                     <ContentTitle><h3>Misc</h3></ContentTitle>
                     <CountryMisc country={country}/>
+
+                    <ModalWrapper active={showModal}>
+                    <button onClick={() => setShowModal(!showModal)}>Click</button>
+                    </ModalWrapper>
                 </SectionContent>
             
             </Section>}

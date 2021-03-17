@@ -6,9 +6,9 @@ export const Row = styled.div`
     width: 100%;
     margin: 0.6rem 0;
 
-    & :last-of-type {
+    /* & :last-of-type {
         padding-bottom: 10rem;
-    }
+    } */
 `
 
 export const Title = styled.div`

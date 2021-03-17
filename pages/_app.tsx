@@ -13,6 +13,7 @@ import { Header } from '../components/Header';
 import { SearchContext } from '../contexts/SearchContext';
 import { SearchBar } from '../components/SearchBar';
 import { ScrollButton } from '../components/ScrollButton';
+import { ModalContext } from '../contexts/ModalContext';
 
 function MyApp({ Component, pageProps }) {
   const { theme, themeToggler } = useDarkMode();
@@ -20,6 +21,8 @@ function MyApp({ Component, pageProps }) {
 
   const [ searchValue, setSearchValue ]: any = useState('');
   const [ showSeach, setShowSearch ]: any = useState(true);
+
+  const [ showModal, setShowModal ]: any = useState(false);
 
   const router = useRouter();
   const route = router.pathname;
@@ -50,11 +53,13 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={themeMode}>
       <SearchContext.Provider value={{ searchValue, setSearchValue, showSeach }}  >
-        <GlobalStyles />
-        <Header {...pageProps} theme={theme} themeToggler={(val) => themeToggler(val)}/>
-        {showSeach && <SearchBar {...pageProps} theme={theme} setSearchValue={setSearchValue} showSearch={showSeach} />}
-        <Component {...pageProps} theme={theme} searchValue={searchValue} />
-        <ScrollButton {...pageProps} theme={theme} />
+        <ModalContext.Provider value={{ showModal, setShowModal }}>
+          <GlobalStyles />
+            <Header {...pageProps} theme={theme} themeToggler={(val) => themeToggler(val)}/>
+            {showSeach && <SearchBar {...pageProps} theme={theme} setSearchValue={setSearchValue} showSearch={showSeach} />}
+            <Component {...pageProps} theme={theme} searchValue={searchValue} />
+            <ScrollButton {...pageProps} theme={theme} />
+        </ModalContext.Provider>
       </SearchContext.Provider>
     </ThemeProvider>
   )
