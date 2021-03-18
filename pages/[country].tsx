@@ -9,6 +9,7 @@ import { CountryTranslation } from '../components/Country/CountryTranslation';
 import { CountryMisc } from '../components/Country/CountryMisc';
 import { ModalWrapper } from '../components/Modal';
 import { ModalContext } from '../contexts/ModalContext';
+import axios from 'axios';
 
 
 
@@ -23,9 +24,8 @@ const Country: FC = () => {
 
     const getData = () => {
         if (route !== '[country]') {
-            fetch(`${process.env.NEXT_PUBLIC_BASE_API}/name/${route}?fullText=true`)
-            .then(res => res.json())
-            .then (res => setCountry(res[0]))
+            axios.get(`${process.env.NEXT_PUBLIC_BASE_API}/name/${route}?fullText=true`)
+            .then (res => setCountry(res.data[0]))
             .catch(err => console.log(err))
         }
     }

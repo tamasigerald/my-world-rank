@@ -1,5 +1,7 @@
 import { FC, useContext, useEffect, useState } from 'react';
 import Head from 'next/head';
+import axios from 'axios';
+
 import { Section, SectionHeader } from '../components/Section';
 import { CountryTable } from '../components/Home/CountryTable';
 import { SearchContext } from '../contexts/SearchContext';
@@ -14,12 +16,9 @@ const Home: FC<Props> = ({ theme }) => {
 
   const { searchValue }:any = useContext(SearchContext);
 
-  // console.log(countries[0]);
-
   const getData = () => {
-    fetch(process.env.NEXT_PUBLIC_BASE_API + '/all')
-    .then(res => res.json())
-    .then (res => setCountries(res))
+    axios.get(process.env.NEXT_PUBLIC_BASE_API + '/all')
+    .then (function(res) {setCountries(res.data)})
     .catch(err => console.log(err))
   }
 
