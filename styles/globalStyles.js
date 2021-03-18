@@ -13,5 +13,6 @@ export const GlobalStyles = createGlobalStyle`
         color: ${({ theme }) => theme.colors.text};
         font-size: 2rem;
         transition: all 0.25s;
+        line-height: 1.5;
     }
 `
