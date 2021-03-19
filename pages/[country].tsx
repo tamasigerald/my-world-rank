@@ -1,26 +1,62 @@
 import Head from 'next/head';
 import { useRouter } from "next/router"
 import { FC, useContext, useEffect, useState } from "react";
-import { Section, SectionHeader, SectionContent } from "../components/Section"
-import { styled } from "../styles/theme";
+import axios from 'axios';
+import styled from 'styled-components';
 
+import { Section, SectionHeader, SectionContent } from "../components/Section"
 import { CountryDetail } from '../components/Country/CountryDetail';
 import { CountryTranslation } from '../components/Country/CountryTranslation';
 import { CountryMisc } from '../components/Country/CountryMisc';
 import { ModalWrapper } from '../components/Modal';
+import { Button } from '../components/Button';
 import { ModalContext } from '../contexts/ModalContext';
-import axios from 'axios';
 
-
+type Modal = '' | 'translations' | 'misc' ;
 
 const Country: FC = () => {
 
     const router = useRouter();
     const route = router.asPath.replace(/^\//, '');
+    const initialModalState: Modal = '';
 
     const { showModal, setShowModal }: any = useContext(ModalContext);
 
     const [ country, setCountry ] = useState(null);
+    const [ modal, setModal ] = useState<Modal>(initialModalState);
+
+    const closeModal = () => {
+        setShowModal(!showModal);
+        setModal(initialModalState);
+    }
+
+    const handleModal = (a: Modal) => {
+        setShowModal(!showModal);
+        setModal(a)
+        console.log(a);
+    }
+
+    const renderModal = (modal) => {
+        switch(modal) {
+            case 'translations':
+                return (
+                <>
+                    <ContentTitle><h3>Translations</h3></ContentTitle>
+                    <CountryTranslation country={country} />
+                </>)
+            case 'misc':
+                return (
+                    <>
+                        <ContentTitle><h3>Misc</h3></ContentTitle>
+                        <CountryMisc country={country} />
+                    </>
+                )
+                
+
+            default:
+                break;
+        }
+    }
 
     const getData = () => {
         if (route !== '[country]') {
@@ -44,17 +80,13 @@ const Country: FC = () => {
                 </SectionHeader>
                 <SectionContent>
                     <Flag src={country.flag} />
-                    <button onClick={() => setShowModal(!showModal)}>Click</button>
+                    <Buttons onClick={() => handleModal('translations')}>Translations</Buttons>
+                    <Buttons onClick={() => handleModal('misc')}>More</Buttons>
                     <ContentTitle><h3>Details</h3></ContentTitle>
-                    <CountryDetail country={country}/>
+                    <CountryDetail country={country} />
 
-                    <ContentTitle><h3>Translations</h3></ContentTitle>
-                    <CountryTranslation country={country}/>
-
-                    <ContentTitle><h3>Misc</h3></ContentTitle>
-                    <CountryMisc country={country}/>
-
-                    <ModalWrapper>
+                    <ModalWrapper fn={closeModal}>
+                        {renderModal(modal)}
                     </ModalWrapper>
                 </SectionContent>
             
@@ -97,4 +129,17 @@ const Flag = styled.img`
     border-radius: 1rem;
     margin: 2rem 0;
     width: 90%;
+`
+
+const Buttons = styled(Button)`
+    border: 0;
+    position: relative;
+    transform: translate(-50%, -50%);
+    margin: 0 5%;
+    width: auto;
+    border-radius: 1rem;
+
+    &:before {
+        border-radius: 1rem;
+    }
 `

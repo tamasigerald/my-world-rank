@@ -16,6 +16,7 @@ export const Button = styled.button`
     cursor: pointer;
     transition: bottom 0.25s;
     outline: 0;
+    z-index: 9999;
 
     @media ${breakpoint.phablet} {
         &:hover {

@@ -23,7 +23,7 @@ export const CountryMisc = (props) => {
             <Title>Currencies:</Title>
             <Content>
             {country.currencies.map((el, i) => (
-                <ContentRow key={i}>{el.code} - {el.name}</ContentRow>
+                <ContentRow key={i} onClick={() => props.setModal('currency', `${el.code}`)} >{el.code} - {el.name}</ContentRow>
             ))}
             </Content>
         </Row>}
