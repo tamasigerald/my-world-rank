@@ -30,7 +30,7 @@ const Modal = styled.div`
     background-color: ${props => props.theme.colors.body};
     color: ${props => props.theme.colors.dext};
     transform: ${props => props.active ? 'translateY(0)' : 'translateY(100%)'};
-    padding: 60px 30px 5% 30px;
+    padding: 80px 30px 5% 30px;
     z-index: 9999;
     transition: transform 0.5s ease;
 `

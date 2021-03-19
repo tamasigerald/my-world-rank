@@ -134,9 +134,9 @@ const Flag = styled.img`
 const Buttons = styled(Button)`
     border: 0;
     position: relative;
-    transform: translate(-50%, -50%);
+    transform: translate(-15%, -50%);
     margin: 0 5%;
-    width: auto;
+    width: 120px;
     border-radius: 1rem;
 
     &:before {
