@@ -5,10 +5,6 @@ export const Row = styled.div`
     flex-direction: row;
     width: 100%;
     margin: 0.5rem 0;
-
-    /* & :last-of-type {
-        padding-bottom: 10rem;
-    } */
 `
 
 export const Title = styled.div`
@@ -29,8 +25,6 @@ export const Content = styled.div`
 `
 
 export const ContentRow = styled.div`
-    /* margin-bottom: 1rem; */
-
     & :last-of-type {
         margin-bottom: 0;
     }
