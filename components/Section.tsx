@@ -1,10 +1,11 @@
-import { styled } from "../styles/theme";
+import styled from 'styled-components';
 
 export const Section = styled.section`
+    position: relative;
     margin-top: 60px;
-    /* height: 100vh; */
     width: 100vw;
     padding: 0 15px;
+    padding-bottom: 10rem;
 `
 
 export const SectionHeader = styled.header`
@@ -19,9 +20,8 @@ export const SectionContent = styled.article`
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-
-
-    font-size: 2.5rem;
+    position: relative;
+    font-size: 2.1rem;
     font-weight: 300;
-    height: 40px;
+    height: 100%;
 `

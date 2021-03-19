@@ -1,36 +1,11 @@
-import { useEffect, useState } from "react";
 import styled from 'styled-components';
 
-import { scrollBtn, breakpoint } from "../styles/theme";
+import { breakpoint } from "../styles/theme";
 
-
-
-export const ScrollButton = () => {
-
-    const [ show, setShow ] = useState(false);
-
-    const handleShowBtn = () => {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 10) {
-                setShow(true);
-            }
-            if (window.scrollY < 10) {
-                setShow(false);
-            }
-        })
-    }
-
-    useEffect(handleShowBtn, []);
-
-    return (
-        <Button show={show} onClick={() => {window.scroll({top: 1, behavior: 'smooth'})}} >top</Button>
-    )
-}
-
-const Button = styled.button`
-    position: fixed;
-    bottom: ${props => props.show ? scrollBtn.show : scrollBtn.hide};
-    left: 3rem;
+export const Button = styled.button`
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
     background-color: transparent;
     border: 0;
     border-radius: 50%;
@@ -41,6 +16,7 @@ const Button = styled.button`
     cursor: pointer;
     transition: bottom 0.25s;
     outline: 0;
+    z-index: 9999;
 
     @media ${breakpoint.phablet} {
         &:hover {

@@ -24,7 +24,6 @@ export const Header = (props) => {
         </ToggleThemeButton>
         <NavBar>
             <Link href="/"><NavLink>Home</NavLink></Link>
-            <Link href="/currency"><NavLink>Currency</NavLink></Link>
             <Link href="/about"><NavLink>About</NavLink></Link>
         </NavBar>
         <NavToggle>M</NavToggle>
